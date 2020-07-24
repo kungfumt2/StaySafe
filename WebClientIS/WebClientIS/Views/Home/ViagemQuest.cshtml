@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "ViagemQuest";
+}
+
+    <body>
+        @using (Html.BeginForm("ViagemQuest", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+        {
+            <div id="login">
+                
+                <div class="container">
+                    <div id="login-row" class="row justify-content-center align-items-center">
+                        <div id="login-column" class="col-md-6">
+                            <div id="login-box" class="col-md-12">
+
+                     
+
+                                <h3 class="text-info">Viajou para algum destes países?</h3>
+                                <div class="form-group">
+                                    <label class="text-info">China</label><br>
+                                    <input type="radio" id="ss" name="china" value="Sim">
+                                    <label for="ss">Sim</label><br>
+                                    <input type="radio" id="nn" name="china" value="Não">
+                                    <label for="nn">Não</label><br>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-info">EUA</label><br>
+                                    <input type="radio" id="sss" name="eua" value="Sim">
+                                    <label for="sss">Sim</label><br>
+                                    <input type="radio" id="nnn" name="eua" value="Não">
+                                    <label for="nnn">Não</label><br>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-info">Espanha</label><br>
+                                    <input type="radio" id="ssss" name="espanha" value="Sim">
+                                    <label for="ssss">Sim</label><br>
+                                    <input type="radio" id="nnnn" name="espanha" value="Não">
+                                    <label for="nnnn">Não</label><br>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-info">Itália</label><br>
+                                    <input type="radio" id="sssss" name="italia" value="Sim">
+                                    <label for="sssss">Sim</label><br>
+                                    <input type="radio" id="nnnnn" name="italia" value="Não">
+                                    <label for="nnnnn">Não</label><br>
+
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn-info" type="submit">Próximo</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </body>

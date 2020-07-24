@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+
+
+    @using (Html.BeginForm("Intro", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data", @id = "form" }))
+    {<h3 class="text-center text-white pt-5">Introdução</h3>
+        <br>
+
+        <label class="text-info">Já consultou um médico?</label><br>
+
+        <input type="radio" id="medico" name="medico" value="sim">
+        <label for="medico"> Sim</label><br>
+        <input type="radio" id="medicon" name="medico" value="nao">
+        <label for="medicon">Não</label><br>
+
+
+        <br>
+        <label class="text-info">Teve contacto com  infetados ou suspeitos?</label><br>
+
+        <input type="radio" id="contato" name="contato" value="sim">
+        <label for="contato"> Sim</label><br>
+        <input type="radio" id="contaton" name="contato" value="nao">
+        <label for="contaton">Não</label><br>
+        <br>
+        <label class="text-info">Viajou para regiões de risco?</label><br>
+
+
+        <input type="radio" id="viagem" name="viagem" value="sim">
+        <label for="viagem"> Sim</label><br>
+        <input type="radio" id="viagemn" name="viagem" value="nao">
+        <label for="viagemn">Não</label><br>
+        <br>
+        <input class="btn-info" type="submit" value="Próximo">
+    }
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model APIIS.Models.Paciente
+
+<h2>
+    Registo de Paciente
+</h2>
+
+@using (Html.BeginForm("RegistarPaciente", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data", @id = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.IDU)
+    @Html.HiddenFor(m => m.Estado)
+    @Html.HiddenFor(m => m.CodigoPac)
+    @Html.HiddenFor(m => m.Risco)
+
+
+
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <label class="text-info">Idade:</label><br>
+            @Html.TextBoxFor(m => m.Idade, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label class="text-info">Morada:</label><br>
+            @Html.TextBoxFor(m => m.Morada, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="text-info">Código Postal:</label><br>
+            @Html.TextBoxFor(m => m.CodigoPostal, new { @class = "form-control" })
+        </div>
+        @*<div class="form-group">
+                <label class="text-info">Fotografia:</label><br>
+                @Html.TextBoxFor(m => m.Fotografia, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.Fotografia)
+            </div>*@
+        
+        <div class="form-group">
+            @Html.RadioButtonFor(model => model.Sexo, "Masculino", false)@Html.Label("Masculino")
+            @Html.RadioButtonFor(model => model.Sexo, "Feminino", false)@Html.Label("Feminino")
+        </div>
+        <div class="form-group">
+            <button class="btn-info" type="submit">Registar</button>
+            <a href="@Url.Action("Loggin","Home")">Já se encontra registado?</a>
+        </div>
+
+
+
+
+    </div>
+
+}

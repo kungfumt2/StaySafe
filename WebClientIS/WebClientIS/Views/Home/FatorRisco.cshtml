@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>Possui algum destes fatores de risco?</h1>
+
+    @using (Html.BeginForm("FatorRisco", "Home",  FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data", @id = "form" }))
+    {   
+    <br>
+        <input type="checkbox" id="Tabagismo" name="Tabagismo" value="Tabagismo">
+        <label for="Tabagismo"> Tabagismo</label><br>
+        <input type="checkbox" id="hiper" name="hiper" value="Hipertensão">
+        <label for="hiper"> Hipertensão</label><br>
+        <input type="checkbox" id="diabetes" name="diabetes" value="Diabetes">
+        <label for="diabetes"> Diabetes</label><br>
+        <input type="checkbox" id="colestrol" name="colestrol" value="Colestrol">
+        <label for="colestrol"> Colestrol</label><br><br>
+        <div>
+            <button type="submit" class="btn-success">Adicionar Sintomas</button>
+        </div>
+    }
+
+</body>
+</html>

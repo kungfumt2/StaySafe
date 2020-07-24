@@ -1,0 +1,67 @@
+﻿<body>
+    @using (Html.BeginForm("SintomasQuest", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        <div id="login">
+            <h3 class="text-center text-white pt-5">Sintomas</h3>
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+
+                            <div class="form-group">
+                                <label class="text-info">Esteve em contacto direto com alguém infetado com Coronavirus?</label><br>
+                                <input type="radio" id="I" name="contacto" value="Sim">
+                                <label for="i">Sim</label><br>
+                                <input type="radio" id="R" name="contacto" value="Não">
+                                <label for="R">Não</label><br>
+
+                            </div>
+
+                            <h3 class="text-info">Possuí algum deste sintomas?</h3>
+                            <div class="form-group">
+                                <label class="text-info">Corrimento Nasal?</label><br>
+                                <input type="radio" id="ss" name="corrimento" value="Sim">
+                                <label for="ss">Sim</label><br>
+                                <input type="radio" id="nn" name="corrimento" value="Não">
+                                <label for="nn">Não</label><br>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-info">Cansaço?</label><br>
+                                <input type="radio" id="sss" name="cansaco" value="Sim">
+                                <label for="sss">Sim</label><br>
+                                <input type="radio" id="nnn" name="cansaco" value="Não">
+                                <label for="nnn">Não</label><br>
+
+                            </div>
+                       
+                            <div class="form-group">
+                                <label class="text-info">Diarreia?</label><br>
+                                <input type="radio" id="ssss" name="diarreia" value="Sim">
+                                <label for="ssss">Sim</label><br>
+                                <input type="radio" id="nnnn" name="diarreia" value="Não">
+                                <label for="nnnn">Não</label><br>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info">Congestionamento Nasal?</label><br>
+                                <input type="radio" id="sssss" name="cnasal" value="Sim">
+                                <label for="sssss">Sim</label><br>
+                                <input type="radio" id="nnnnn" name="cnasal" value="Não">
+                                <label for="nnnnn">Não</label><br>
+
+                            </div>
+                            <div class="form-group">
+                                <button class="btn-info" type="submit">Próximo</button>
+                           
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>

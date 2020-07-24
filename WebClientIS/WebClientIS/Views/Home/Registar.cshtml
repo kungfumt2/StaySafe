@@ -1,0 +1,60 @@
+﻿@model APIIS.Models.Utilizador
+
+<h2>
+    Registo de Utilizador
+</h2>
+
+@using (Html.BeginForm("RegistarAsync", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data", @id = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Estado)
+    @Html.HiddenFor(m => m.Fotografia)
+
+    @Html.HiddenFor(m => m.Tipo)
+
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <label class="text-info">Nome:</label><br>
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label class="text-info">Email:</label><br>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="text-info">Password:</label><br>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+        @*<div class="form-group">
+                <label class="text-info">Fotografia:</label><br>
+                @Html.TextBoxFor(m => m.Fotografia, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.Fotografia)
+            </div>*@
+        <div class="form-group">
+            Adicionar Ficheiro:
+            <input type="file" runat="server" name="ctlFile" accept=".png,.jpg,.jpeg">
+
+
+        </div>
+        @*<div class="form-group">
+            @Html.RadioButtonFor(model => model.Tipo, "Paciente", false)@Html.Label("Paciente")
+            @Html.RadioButtonFor(model => model.Tipo, "Assistente", false)@Html.Label("Assistente")
+        </div>*@
+        <div class="form-group">
+            <button class="btn-info" type="submit">Registar</button>
+            <a href="@Url.Action("Loggin","Home")">Já se encontra registado?</a>
+        </div>
+
+
+
+
+    </div>
+
+}

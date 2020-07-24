@@ -1,0 +1,43 @@
+﻿<body>
+    @using (Html.BeginForm("MedicoQuest", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        <div id="login">
+            <h3 class="text-center text-white pt-5">QUESTIONÁRIO MÉDICO</h3>
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+
+                          
+                            <div class="form-group">
+                                <label class="text-info">Qual o estado em que o médico o colocou?</label><br>
+                                <input type="radio" id="I" name="estado" value="Infetado">
+                                <label for="i">Infetado</label><br>
+                                <input type="radio" id="R" name="estado" value="Risco">
+                                <label for="R">Risco</label><br>
+                                <input type="radio" id="N" name="estado" value="Não Infetado">
+                                <label for="N">Não Infetado</label>
+                                <input type="radio" id="Imune" name="estado" value="Imune">
+                                <label for="Imune">Imune</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info">Foi-lhe receitada alguma medicação?</label><br>
+                                <input type="radio" id="S" name="medicacao" value="medicado">
+                                <label for="i">Sim</label><br>
+                                <input type="radio" id="Nao" name="medicacao" value="nao_medicado">
+                                <label for="R">Não</label><br>
+                             
+                            </div>
+                            <div class="form-group">
+                                <button class="btn-info" type="submit">Próximo</button>
+       
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>

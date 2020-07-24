@@ -1,0 +1,90 @@
+﻿@using APIIS.Models
+@using WebClientIS.Controllers
+@{
+    ViewData["Title"] = "Resultados";
+}
+
+<h2>Resultados</h2>
+
+<body>
+
+    @using (Html.BeginForm("Resultados", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        Utilizador u = new Utilizador();
+        u = u.GetUtilizadors(HomeController.UserId, "");
+        Paciente p = new Paciente();
+        p = p.GetPacientes().Where(x => x.IDU == HomeController.UserId).First();
+        <div id="login">
+
+            <h3 class="text-info ">Identificação:</h3>
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+
+                            <div class="form-group">
+                                <label>Nome: @u.Nome</label><br>
+                                <label>Email: @u.Email</label><br>
+
+
+                            </div>
+                            @{ <h3 class="text-info">Geral:</h3>
+
+                                foreach (string a in HomeController.respostas)
+                                {
+                                    if (a.Split(':')[0] == "Sintomas")
+                                    {
+                                        if (a.Split(':')[1] != "Contacto" && a.Split(':')[2] == "SIM")
+                                        {
+                                            <label>@a.Split(':')[1]</label><br>
+
+                                        }
+
+                                        else
+                                        {
+                                            if (a.Split(':')[1] == "Contacto")
+                                            {
+                                                <label>@a.Split(':')[1]  ->    @a.Split(':')[2]</label><br>
+                                            }
+
+                                        }
+                                    }
+                                }
+
+                                <h3 class="text-info">  Outros Sintomas:</h3>
+                                foreach (string a in HomeController.respostas)
+                                {
+
+                                    if (a.Split(':')[0] == "Medicacao")
+                                    {
+                                        <label>Encontra-se a tomar medicação</label><br>
+                                    }
+                                }
+
+                                <h3 class="text-info">  Fatores de risco:</h3>
+                                foreach (string a in HomeController.respostas)
+                                {
+                                    if (a.Split(':').Length > 2)
+                                    {
+                                        if (a.Split(':')[0] == "FR" && a.Split(':')[2] == "SIM")
+                                        {
+                                            <label>@a.Split(':')[1]</label><br>
+
+                                        }
+                                    }
+                                }
+                                <h3 class="text-info"> Resultado da Avaliação:@p.Estado</h3>
+                            }
+                            <div class="form-group">
+                                <button class="btn-info" type="submit">Enviar</button>
+                                <button type="submit" formaction='@Url.Action("Intro", "Home")' class="btn-info">Refazer questionário</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>

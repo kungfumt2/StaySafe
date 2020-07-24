@@ -1,0 +1,100 @@
+﻿@using APIIS.Models
+@using WebClientIS.Controllers
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{ Notificacao n = new Notificacao();
+    if (n.GetNotificacao() != null)
+    {
+        n = n.GetNotificacao();
+        <label>@n.mensagem</label>
+    }
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @role = "form", @class = "form-horizontal", enctype = "multipart/form-data", @id = "form" }))
+{
+    @Html.Hidden("latitude", "");
+    @Html.Hidden("longitude", "");
+    <style>
+        #map {
+            height: 500px;
+        }
+    </style>
+    <br />
+    <br />
+
+
+    <div id="map"></div>
+
+    <script>
+            var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 41.295898, lng: -7.746350 },
+                zoom: 12
+            });
+
+            $.get("@Url.Action("GetLocation", "Home")", function (data) {
+                var json = jQuery.parseJSON(data);
+
+                var markerBracU = new google.maps.Marker({
+                    position: { lat: parseFloat(json.latitude), lng: parseFloat(json.longitude) },
+                    map: map,
+
+                });
+
+
+
+                var contentStringBracU = '';
+                var infowindowForBracU = new google.maps.InfoWindow({
+                    content: contentStringBracU
+                });
+                markerBracU.addListener('mouseover', function () {
+                    infowindowForBracU.open(map, markerBracU);
+                });
+                markerBracU.addListener('mouseout', function () {
+                    infowindowForBracU.close();
+                });
+
+                })
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH_-WcTML8gEv6pExB-eJlzTrCVpKYnXo&callback=initMap"
+            async defer>
+
+
+    </script>
+    @if (1 == 1)
+    {<h3>No raio de 5 km da sua morada:</h3>
+        casos caso = new casos();
+        caso = caso.Getcasos(HomeController.UserId);
+        <label class="text-info">Infetados: @caso.ninfet</label>
+        <br>
+        <label class="text-info">Risco: @caso.nrisco</label>
+        <br>
+        <label class="text-info">Não Infetados: @caso.nninft</label>
+        <br>
+        <label class="text-info">Imune: @caso.nimunes</label>
+        <br>
+        StatusPais s = new StatusPais();
+        s = s.GetPais();
+        <h3>Dados de Portugal:</h3>
+        <label class="text-info">Novos confirmados: @s.NewConfirmed</label>
+        <br>
+        <label class="text-info">Total Confirmados:  @s.TotalConfirmed</label>
+        <br>
+        <label class="text-info">Novas mortes: @s.NewConfirmed</label>
+        <br>
+        <label class="text-info">Total de mortes: @s.TotalDeaths</label>
+        <br>
+        <label class="text-info">Novos recuperados:@s.NewRecovered</label>
+        <br>
+        <label class="text-info">Total de recuperados: @s.TotalRecovered</label>
+        <br>
+    }
+
+    <button type="submit" formaction='@Url.Action("Intro", "Home", new { medico="cenas" })' class="btn btn-primary">Refazer questionário</button>
+}
+
